@@ -37,6 +37,7 @@ CREATE TABLE IF NOT EXISTS `raumverwaltung`.`user` (
   `surname` VARCHAR(45) NOT NULL,
   `username` VARCHAR(45) NOT NULL,
   `password` VARCHAR(45) NOT NULL,
+  `admin` BIT NOT NULL,
   PRIMARY KEY (`iduser`))
 ENGINE = InnoDB;
 
