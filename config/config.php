@@ -22,7 +22,7 @@ class config {
 	const SQL_PASSWORD = '';
 	
 	// Datenbankname
-	const SQL_DATABASE = 'mvcgibs';	
+	const SQL_DATABASE = 'raumverwaltung';	
 	
 	// Default-Klasse der Input-Felder 
 	const INPUT_CLASS_N = '';

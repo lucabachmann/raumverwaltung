@@ -1,4 +1,3 @@
-<?php require_once("../config/config.php"); ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -25,7 +24,7 @@
                 </td>
             </tr>
             <tr>
-		<td valign="top" align="left">
+				<td valign="top" align="left">
                     <table border="0" width="100%" cellpadding="5" cellspacing="0">
                     <tr><td> <?php $this->content(); ?> </td></tr>
                     </table>

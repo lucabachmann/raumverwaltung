@@ -1,7 +1,7 @@
 <?php
 /**
- * @author      Daniel Mosimann
- * @date        1. April 2018
+ * @author      Marco Sturzo
+ * @date        8. Mai 2019
  *
  * Datenbankschnittstelle GIBS Solothurn.
  * Stellt grundlegende Datenbankfunktionen zur Verfügung.
@@ -9,7 +9,7 @@
  *
  */
 class db {
-        private static $dbhandle = Null;              // DB-Handle
+        public static $mysqli = Null;              // DB
 
         /**
          * Konstruktor
@@ -23,11 +23,13 @@ class db {
          * @param String $username Benutzername für den Zugriff auf die Datenbank
          * @param String $password Kennwort für den Zugriff auf die Datenbank
 	 */
-	public static function connect( $database, $username, $password ) {   
-            if (self::$dbhandle == Null) {
+	public static function connect( $database, $username, $password ) {
+	       if (self::$mysqli == Null) {
                 try {
-                    self::$dbhandle = new PDO('mysql:host=localhost;dbname='.$database, $username, $password);
-                    self::$dbhandle->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+                    self::$mysqli = new mysqli("localhost", $username, $password, $database);
+                    if (self::$mysqli->connect_errno) {
+                        die ( "Failed to connect to MySQL: " . $mysqli->connect_errno ." ". $mysqli->connect_error);
+                    }
                 } catch (PDOException $e) {
                     throw new Exception (get_class.': Connection failed: ' . $e->getMessage());
                 }
@@ -39,7 +41,7 @@ class db {
 	 * @param String $value, wert der Escaped wird (Referenz)
 	 */
 	public function escape( $value ) {
-            return self::$dbhandle->quote($value);
+	    return self::$mysqli->quote($value);
 	}
 
 	/**
@@ -48,7 +50,7 @@ class db {
 	 */
 	public function select( $sql ) {
             try {
-                $sth = self::$dbhandle->query($sql);
+                $sth = self::$mysqli->query($sql);
                 return $sth->fetchAll(PDO::FETCH_OBJ);
             } catch (PDOException $e) {
                 throw new Exception (get_class.': Fehler in Select: '.$e->getMessage());
@@ -61,11 +63,11 @@ class db {
 	 */
 	public function query( $sql ) {
             try {
-                self::$dbhandle->query($sql);
+                self::$mysqli->query($sql);
             } catch (PDOException $e) {
                 throw new Exception(get_class.': Fehler in Query: ' . $e->getMessage()."<pre>".$sql."</pre>");
             }        
-            return self::$dbhandle->lastInsertId();
+            return self::$mysqli->lastInsertId();
 	}
 }
 

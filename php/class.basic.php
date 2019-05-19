@@ -1,8 +1,7 @@
 <?php
-
-/*
- * @autor Daniel Mosimann.
- * @date 21. November 2016
+/**
+ * @autor Marco Sturzo
+ * @date 8. Mai 2019
  * 
  * Stellt grundlegende Funktionen zur Verfügung.
  */

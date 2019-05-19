@@ -1,7 +1,7 @@
 <?php
 /**
- * @autor Daniel Mosimann.
- * @date 1. April 2018
+ * @autor Marco Sturzo
+ * @date 8. Mai 2019
  *
  * Der Controller nimmt http-Anfragen entgegen, ruft die gewünschten Subcontroller auf, 
  * nimmt den von den Subcontrollern produzierte Output entgegen, fügt diesen in an der

@@ -1,7 +1,7 @@
 <?php
 /**
- * @author Daniel Mosimann
- * @date 21. November 2016
+ * @author Marco Sturzo
+ * @date 8. Mai 2019
  *
  *  Schnittstelle für die "Subcontroller". Diese Schnittstelle
  *  muss von den Klassen implementiert werden, welche beim 
